@@ -5,6 +5,56 @@
         xmlns:mah="http://metro.mahapps.com/winfx/xaml/controls"        
         prism:ViewModelLocator.AutoWireViewModel="True"
         Title="{Binding Title}" Height="350" Width="525" >
+    <Window.Resources>
+        <ResourceDictionary>
+            <Ellipse x:Key="AppThemeMenuIcon"
+                     Width="16"
+                     Height="16"
+                     x:Shared="False"
+                     Fill="{Binding ColorBrush, Mode=OneWay}"
+                     Stroke="{Binding BorderColorBrush, Mode=OneWay}"
+                     StrokeThickness="1" />
+            <Ellipse x:Key="AccentMenuIcon"
+                     Width="16"
+                     Height="16"
+                     x:Shared="False"
+                     Fill="{Binding ColorBrush, Mode=OneWay}" />
+
+            <Style x:Key="AppThemeMenuItemStyle"
+                   BasedOn="{StaticResource MahApps.Styles.MenuItem}"
+                   TargetType="{x:Type MenuItem}">
+                <Setter Property="Command" Value="{Binding ChangeAccentCommand}" />
+                <Setter Property="CommandParameter" Value="{Binding Name, Mode=OneWay}" />
+                <Setter Property="Header" Value="{Binding Name, Mode=OneWay}" />
+                <Setter Property="Icon" Value="{StaticResource AppThemeMenuIcon}" />
+            </Style>
+
+            <Style x:Key="AccentColorMenuItemStyle"
+                   BasedOn="{StaticResource MahApps.Styles.MenuItem}"
+                   TargetType="{x:Type MenuItem}">
+                <Setter Property="Command" Value="{Binding ChangeAccentCommand}" />
+                <Setter Property="CommandParameter" Value="{Binding Name, Mode=OneWay}" />
+                <Setter Property="Header" Value="{Binding Name, Mode=OneWay}" />
+                <Setter Property="Icon" Value="{StaticResource AccentMenuIcon}" />
+            </Style>
+
+            <Style x:Key="SyncModeMenuItemStyle"
+                   BasedOn="{StaticResource MahApps.Styles.MenuItem}"
+                   TargetType="{x:Type MenuItem}">
+                <Setter Property="Command" Value="{Binding DataContext.ChangeSyncModeCommand, RelativeSource={RelativeSource AncestorType=Window}}" />
+                <Setter Property="CommandParameter" Value="{Binding Mode=OneTime}" />
+                <Setter Property="Header" Value="{Binding Mode=OneTime}" />
+            </Style>
+
+            <UserControl x:Key="CustomDialogTest"
+                         x:Name="CustomDialogTest"
+                         MinHeight="200">
+
+                <TextBlock x:Name="MessageTextBlock" Text="Message shown by this custom Dialog." />
+            </UserControl>
+        </ResourceDictionary>
+    </Window.Resources>
+        
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto" />
@@ -17,12 +67,29 @@
               HorizontalAlignment="Left"
               VerticalAlignment="Stretch">
             <MenuItem Header="Theme"
+                      ItemContainerStyle="{StaticResource AppThemeMenuItemStyle}"
                       ItemsSource="{Binding AppThemes, Mode=OneWay}" />
             <MenuItem Header="Accent"
+                      ItemContainerStyle="{StaticResource AccentColorMenuItemStyle}"
                       ItemsSource="{Binding AccentColors, Mode=OneWay}" />
         </Menu>
 
-        <StatusBar Grid.Row="2">
+        <mah:MetroAnimatedSingleRowTabControl x:Name="MainTabControl" Grid.Row="1">
+            <TabItem Header="buttons">
+                <ScrollViewer Margin="2"
+                              HorizontalScrollBarVisibility="Auto"
+                              VerticalScrollBarVisibility="Auto">
+                </ScrollViewer>
+            </TabItem>
+            <TabItem Header="text">
+                <ScrollViewer Margin="2"
+                              HorizontalScrollBarVisibility="Auto"
+                              VerticalScrollBarVisibility="Auto">
+                </ScrollViewer>
+            </TabItem>
+         </mah:MetroAnimatedSingleRowTabControl>
+
+            <StatusBar Grid.Row="2">
             <StatusBarItem>MahApps.Metro DEMO Application</StatusBarItem>
             <StatusBarItem>Selected Tab:</StatusBarItem>
             <StatusBarItem Content="{Binding ElementName=MainTabControl, Path=SelectedItem.Header, Mode=OneWay}" />
