@@ -1,7 +1,8 @@
-﻿<Window x:Class="PlayWithMahApps.Metro.Views.MainWindow"
+﻿<mah:MetroWindow x:Class="PlayWithMahApps.Metro.Views.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:prism="http://prismlibrary.com/"
+        xmlns:mah="http://metro.mahapps.com/winfx/xaml/controls"        
         prism:ViewModelLocator.AutoWireViewModel="True"
         Title="{Binding Title}" Height="350" Width="525" >
     <Grid>
@@ -28,4 +29,4 @@
         </StatusBar>        
         
     </Grid>
-</Window>
+</mah:MetroWindow>
