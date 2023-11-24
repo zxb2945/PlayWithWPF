@@ -94,7 +94,22 @@
                     <views:UserControl2 DataContext="{Binding}" />
                 </ScrollViewer>
             </TabItem>
-         </mah:MetroAnimatedSingleRowTabControl>
+            <TabItem Header="progress">
+                <ScrollViewer Margin="2"
+                              HorizontalScrollBarVisibility="Auto"
+                              VerticalScrollBarVisibility="Auto">
+                    <views:UserControl3 DataContext="{Binding}" />
+                </ScrollViewer>
+            </TabItem>
+            <TabItem Header="splitview">
+                <ScrollViewer Margin="2" VerticalScrollBarVisibility="Auto">
+                    <views:UserControl4  DataContext="{Binding}" />
+                </ScrollViewer>
+            </TabItem>
+            <TabItem Header="hamburger">
+                <views:UserControl5 DataContext="{Binding}" />
+            </TabItem>
+        </mah:MetroAnimatedSingleRowTabControl>
 
             <StatusBar Grid.Row="2">
             <StatusBarItem>MahApps.Metro DEMO Application</StatusBarItem>
