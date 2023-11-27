@@ -70,6 +70,7 @@
     </Window.Resources>
 
     <!--How to set window icon from iconpack-->
+    <!--use the IconTemplate property to set a custom Icon at the title bar.-->
     <!--https://github.com/MahApps/MahApps.Metro/issues/3464-->
     <mah:MetroWindow.IconTemplate>
         <DataTemplate>
