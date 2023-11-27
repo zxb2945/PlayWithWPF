@@ -29,39 +29,9 @@
 
         <StackPanel Grid.Column="0">
             <Label Content="Default Button" Style="{DynamicResource DescriptionHeaderStyle}" />
-            <mah:Badged Width="100"
-                        Margin="{StaticResource ControlMargin}"
-                        Badge="3">
-                <Button Content="Mail" />
-            </mah:Badged>
-            <mah:Badged Width="100"
-                        Margin="{StaticResource ControlMargin}"
-                        Badge="2"
-                        IsEnabled="False">
-                <Button Content="Print" />
-            </mah:Badged>
-            <mah:Badged x:Name="CountingBadge"
-                        Width="100"
-                        Margin="{StaticResource ControlMargin}"
-                        BadgeFontSize="12"
-                        BadgeMargin="4 0">
-                <mah:Badged.BadgeTemplate>
-                    <DataTemplate>
-                        <TextBlock Text="{Binding StringFormat='{}Click-count: {0:00}'}" />
-                    </DataTemplate>
-                </mah:Badged.BadgeTemplate>
-                <Button  Content="Click Me" />
-            </mah:Badged>
             <Button Width="100"
                     Margin="{StaticResource ControlMargin}"
                     Content="Enabled" />
-            <Button Width="100"
-                    Margin="{StaticResource ControlMargin}"
-                    Content="Disabled"
-                    IsEnabled="False" />
-        </StackPanel>
-
-        <StackPanel Grid.Row="1" Grid.Column="0">
             <Label Content="Square Button" Style="{DynamicResource DescriptionHeaderStyle}" />
             <Button Width="110"
                     Margin="{StaticResource ControlMargin}"
@@ -69,17 +39,7 @@
                     Style="{DynamicResource MahApps.Styles.Button.Square}" />
             <Button Width="110"
                     Margin="{StaticResource ControlMargin}"
-                    Content="Disabled"
-                    IsEnabled="False"
-                    Style="{DynamicResource MahApps.Styles.Button.Square}" />
-            <Button Width="110"
-                    Margin="{StaticResource ControlMargin}"
                     Content="Enabled"
-                    Style="{DynamicResource MahApps.Styles.Button.Square.Accent}" />
-            <Button Width="110"
-                    Margin="{StaticResource ControlMargin}"
-                    Content="Disabled"
-                    IsEnabled="False"
                     Style="{DynamicResource MahApps.Styles.Button.Square.Accent}" />
             <Button Width="110"
                     Margin="{StaticResource ControlMargin}"
@@ -93,8 +53,8 @@
         </StackPanel>
 
 
+
         <StackPanel Grid.Row="1"
-                    Grid.Column="1"
                     HorizontalAlignment="Center"
                     UseLayoutRounding="True">
             <Label Content="ToggleSwitch" Style="{DynamicResource DescriptionHeaderStyle}" />
@@ -173,19 +133,12 @@
 
 
         <GroupBox Grid.Row="0"
-                  Grid.Column="3"
+                  Grid.Column="2"
                   Margin="4 2"
                   Header="TextBox"
                   UseLayoutRounding="True">
             <AdornerDecorator>
                 <StackPanel>
-                    <TextBox Margin="{StaticResource ControlMargin}"
-                             mah:TextBoxHelper.ClearTextButton="True"
-                             Text="Clear with Escape">
-                        <TextBox.InputBindings>
-                            <KeyBinding Key="Escape" Command="{x:Static mah:MahAppsCommands.ClearControlCommand}" />
-                        </TextBox.InputBindings>
-                    </TextBox>
                     <mah:MetroHeader Margin="{StaticResource ControlMargin}" Header="TextBox Header">
                         <mah:MetroHeader.HeaderTemplate>
                             <DataTemplate>
@@ -205,42 +158,6 @@
                             </TextBox.ContextMenu>
                         </TextBox>
                     </mah:MetroHeader>
-                    <TextBox Margin="{StaticResource ControlMargin}"
-                             HorizontalContentAlignment="Stretch"
-                             mah:TextBoxHelper.ClearTextButton="True"
-                             mah:TextBoxHelper.UseFloatingWatermark="True"
-                             mah:TextBoxHelper.Watermark="Watermark..."
-                             mah:TextBoxHelper.WatermarkAlignment="Right"
-                             SpellCheck.IsEnabled="True"
-                             ToolTip="WatermarkAlignment Right">
-                        <TextBox.ContextMenu>
-                            <ContextMenu>
-                                <MenuItem Header="Custom Item" />
-                                <Separator />
-                                <MenuItem Command="ApplicationCommands.Cut" Style="{DynamicResource MahApps.Styles.MenuItem}" />
-                                <MenuItem Command="ApplicationCommands.Copy" Style="{DynamicResource MahApps.Styles.MenuItem}" />
-                                <MenuItem Command="ApplicationCommands.Paste" Style="{DynamicResource MahApps.Styles.MenuItem}" />
-                            </ContextMenu>
-                        </TextBox.ContextMenu>
-                    </TextBox>
-                    <TextBox Margin="{StaticResource ControlMargin}"
-                             ContextMenu="{x:Null}"
-                             Text="No ContextMenu...">
-                        <TextBox.Style>
-                            <Style BasedOn="{StaticResource MahApps.Styles.TextBox}" TargetType="{x:Type TextBox}">
-                                <Setter Property="mah:TextBoxHelper.ClearTextButton" Value="True" />
-                                <Style.Triggers>
-                                    <Trigger Property="mah:TextBoxHelper.HasText" Value="False">
-                                        <Setter Property="mah:TextBoxHelper.ClearTextButton" Value="False" />
-                                        <Setter Property="mah:TextBoxHelper.Watermark" Value="Now enter some text..." />
-                                    </Trigger>
-                                    <Trigger Property="mah:TextBoxHelper.HasText" Value="True">
-                                        <Setter Property="mah:TextBoxHelper.ClearTextButton" Value="True" />
-                                    </Trigger>
-                                </Style.Triggers>
-                            </Style>
-                        </TextBox.Style>
-                    </TextBox>
                     <TextBox Margin="{StaticResource ControlMargin}"
                              mah:TextBoxHelper.ButtonCommand="{Binding ControlButtonCommand, Mode=OneWay}"
                              mah:TextBoxHelper.UseFloatingWatermark="True"
@@ -262,8 +179,7 @@
                             </Style>
                         </TextBox.Style>
                     </TextBox>
-                    <!--  Entypo MagnifyingGlass  -->
-                    <TextBox Margin="{StaticResource ControlMargin}"
+                    <!--<TextBox Margin="{StaticResource ControlMargin}"
                              mah:TextBoxHelper.ButtonCommand="{Binding ControlButtonCommandWithParameter, Mode=OneWay}"
                              mah:TextBoxHelper.ButtonContent="M17.545,15.467l-3.779-3.779c0.57-0.935,0.898-2.035,0.898-3.21c0-3.417-2.961-6.377-6.378-6.377  C4.869,2.1,2.1,4.87,2.1,8.287c0,3.416,2.961,6.377,6.377,6.377c1.137,0,2.2-0.309,3.115-0.844l3.799,3.801  c0.372,0.371,0.975,0.371,1.346,0l0.943-0.943C18.051,16.307,17.916,15.838,17.545,15.467z M4.004,8.287  c0-2.366,1.917-4.283,4.282-4.283c2.366,0,4.474,2.107,4.474,4.474c0,2.365-1.918,4.283-4.283,4.283  C6.111,12.76,4.004,10.652,4.004,8.287z"
                              mah:TextBoxHelper.Watermark="Search something..."
@@ -273,22 +189,13 @@
                              mah:TextBoxHelper.Watermark="Find something..."
                              Style="{DynamicResource MahApps.Styles.TextBox.Search}">
                         <TextBox.CommandBindings>
-                            <!--<CommandBinding  Command="{x:Static mah:MahAppsCommands.SearchCommand}" />-->
+                            --><!--<CommandBinding  Command="{x:Static mah:MahAppsCommands.SearchCommand}" />--><!--
                         </TextBox.CommandBindings>
-                    </TextBox>
+                    </TextBox>-->
                     <TextBox Margin="{StaticResource ControlMargin}"
                              mah:TextBoxHelper.ButtonCommand="{Binding ControlButtonCommand, Mode=OneWay}"
                              mah:TextBoxHelper.ButtonContent="s"
                              mah:TextBoxHelper.Watermark="Custom icon style" />
-                    <TextBox Margin="{StaticResource ControlMargin}"
-                             mah:TextBoxHelper.Watermark="Number smaller than 10"
-                             Text="{Binding IntegerGreater10Property, ValidatesOnExceptions=True, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged, NotifyOnValidationError=True}" />
-                    <TextBox Margin="{StaticResource ControlMargin}"
-                             mah:TextBoxHelper.SelectAllOnFocus="True"
-                             Text="Select all on focus" />
-                    <TextBox Margin="{StaticResource ControlMargin}"
-                             IsEnabled="False"
-                             Text="Disabled" />
                     <TextBox Margin="{StaticResource ControlMargin}"
                              mah:TextBoxHelper.Watermark="Watermark"
                              IsEnabled="False" />
@@ -301,16 +208,12 @@
                              mah:TextBoxHelper.Watermark="Search style..."
                              IsEnabled="False"
                              Style="{DynamicResource MahApps.Styles.TextBox.Search}" />
-                    <TextBox Margin="{StaticResource ControlMargin}"
-                             mah:TextBoxHelper.Watermark="Number smaller than 10"
-                             IsEnabled="False"
-                             Text="{Binding IntegerGreater10Property, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged, NotifyOnValidationError=True}" />
                 </StackPanel>
             </AdornerDecorator>
         </GroupBox>
 
         <ScrollViewer Grid.Row="0"
-                      Grid.Column="4"
+                      Grid.Column="3"
                       Grid.IsSharedSizeScope="True"
                       VerticalScrollBarVisibility="Auto">
             <StackPanel>
@@ -319,23 +222,11 @@
                         <mah:MetroHeader Header="Text">
                             <TextBox Text="{Binding ElementName=mscb_Example, Path=Text}" />
                         </mah:MetroHeader>
-                        <mah:MetroHeader Header="Separator">
-                            <TextBox Text="{Binding ElementName=mscb_Example, Path=Separator}" />
-                        </mah:MetroHeader>
-                        <mah:MetroHeader Header="IsEditable">
-                            <mah:ToggleSwitch IsOn="{Binding ElementName=mscb_Example, Path=IsEditable}" />
-                        </mah:MetroHeader>
                         <mah:MetroHeader Header="IsReadOnly">
                             <mah:ToggleSwitch IsOn="{Binding ElementName=mscb_Example, Path=IsReadOnly}" />
                         </mah:MetroHeader>
-                        <mah:MetroHeader Header="StaysOpenOnEdit">
-                            <mah:ToggleSwitch IsOn="{Binding ElementName=mscb_Example, Path=StaysOpenOnEdit}" />
-                        </mah:MetroHeader>
                         <mah:MetroHeader Header="ItemStringFormat">
                             <TextBox Text="{Binding ElementName=mscb_Example, Path=ItemStringFormat, Mode=TwoWay}" />
-                        </mah:MetroHeader>
-                        <mah:MetroHeader Header="SelectedItemStringFormat">
-                            <TextBox Text="{Binding ElementName=mscb_Example, Path=SelectedItemStringFormat, Mode=TwoWay}" />
                         </mah:MetroHeader>
                     </StackPanel>
                 </GroupBox>
@@ -343,7 +234,7 @@
 
         </ScrollViewer>
 
-        <GroupBox Grid.Row="1"
+        <GroupBox Grid.Row="0"
                   Grid.Column="4"
                   Margin="4 2"
                   Header="RichTextBox"
