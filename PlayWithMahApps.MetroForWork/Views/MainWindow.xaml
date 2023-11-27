@@ -67,9 +67,20 @@
             </DataTemplate>
 
         </ResourceDictionary>
-    </Window.Resources>    
-    
-    
+    </Window.Resources>
+
+    <!--How to set window icon from iconpack-->
+    <!--https://github.com/MahApps/MahApps.Metro/issues/3464-->
+    <mah:MetroWindow.IconTemplate>
+        <DataTemplate>
+            <iconPacks:PackIconModern Width="{TemplateBinding Width}"
+                                      Height="{TemplateBinding Height}"
+                                      Margin="4"
+                                      Foreground="{DynamicResource IdealForegroundColorBrush}"
+                                      Kind="Box" />
+        </DataTemplate>
+    </mah:MetroWindow.IconTemplate>
+
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto" />
@@ -108,7 +119,7 @@
 
                         <mah:HamburgerMenuIconItem x:Name="AboutOption"
                                                    Command="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType=mah:HamburgerMenu}, Path=DataContext.ShowHamburgerAboutCommand}"
-                                                   Label="HelloLTE">
+                                                   Label="HelloDR">
                             <mah:HamburgerMenuIconItem.Icon>
                                 <iconPacks:PackIconMaterial Width="22"
                                                             Height="22"
@@ -117,13 +128,13 @@
                                                             Kind="TransmissionTower" />
                             </mah:HamburgerMenuIconItem.Icon>
                             <mah:HamburgerMenuIconItem.Tag>
-                                <local:LTE_DRAN DataContext="{Binding}" />
+                                <local:DRWindows DataContext="{Binding}" />
                             </mah:HamburgerMenuIconItem.Tag>
                         </mah:HamburgerMenuIconItem>
                         
                         <mah:HamburgerMenuIconItem x:Name="AboutOption2"
                                                    Command="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType=mah:HamburgerMenu}, Path=DataContext.ShowHamburgerAboutCommand}"
-                                                   Label="HelloLTE">
+                                                   Label="HelloNR">
                             <mah:HamburgerMenuIconItem.Icon>
                                 <!--  iconPacks need to be downloaded through Nuget, and icon by kind property-->
                                 <iconPacks:PackIconMaterial Width="22"
@@ -134,14 +145,14 @@
                             </mah:HamburgerMenuIconItem.Icon>
                             <mah:HamburgerMenuIconItem.Tag>
                                 <!--  it could be placed any type here  -->
-                                <local:LTE_DRAN DataContext="{Binding}" />
+                                <local:NRWindows DataContext="{Binding}" />
                             </mah:HamburgerMenuIconItem.Tag>
                         </mah:HamburgerMenuIconItem>
 
 
                         <mah:HamburgerMenuIconItem x:Name="AboutOption3"
                                                    Command="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType=mah:HamburgerMenu}, Path=DataContext.ShowHamburgerAboutCommand}"
-                                                   Label="HelloLTE">
+                                                   Label="HelloNR">
                             <mah:HamburgerMenuIconItem.Icon>
                                 <iconPacks:PackIconMaterial Width="22"
                                                             Height="22"

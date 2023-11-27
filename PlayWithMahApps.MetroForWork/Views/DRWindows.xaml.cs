@@ -16,11 +16,11 @@ using System.Windows.Shapes;
 namespace PlayWithMahApps.MetroForWork.Views
 {
     /// <summary>
-    /// LTE_DRAN.xaml 的交互逻辑
+    /// DRWindows.xaml 的交互逻辑
     /// </summary>
-    public partial class LTE_DRAN : UserControl
+    public partial class DRWindows : UserControl
     {
-        public LTE_DRAN()
+        public DRWindows()
         {
             InitializeComponent();
         }
