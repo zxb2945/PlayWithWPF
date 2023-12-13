@@ -1,13 +1,15 @@
 ﻿using ControlzEx.Theming;
 using Prism.Commands;
 using Prism.Mvvm;
+using Prism.Regions;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Windows;
 using System.Windows.Input;
 using System.Windows.Media;
 
-namespace PlayWithMahApps.MetroForWork.ViewModels
+namespace PlayWithMahApps_Metro.ViewModels
 {
     public class MainWindowViewModel : BindableBase
     {
@@ -22,27 +24,80 @@ namespace PlayWithMahApps.MetroForWork.ViewModels
 
         public List<AccentColorMenuData> AccentColors { get; set; }
 
-        public MainWindowViewModel()
+        public MainWindowViewModel(IRegionManager regionManager)
         {
             // create metro theme color menu items for the demo
-            this.AppThemes = ThemeManager.Current.Themes
+            AppThemes = ThemeManager.Current.Themes
                                          .GroupBy(x => x.BaseColorScheme)
                                          .Select(x => x.First())
                                          .Select(a => new AppThemeMenuData { Name = a.BaseColorScheme, BorderColorBrush = a.Resources["MahApps.Brushes.ThemeForeground"] as Brush, ColorBrush = a.Resources["MahApps.Brushes.ThemeBackground"] as Brush })
                                          .ToList();
 
             // create accent color menu items for the demo
-            this.AccentColors = ThemeManager.Current.Themes
+            AccentColors = ThemeManager.Current.Themes
                                             .GroupBy(x => x.ColorScheme)
                                             .OrderBy(a => a.Key)
                                             .Select(a => new AccentColorMenuData { Name = a.Key, ColorBrush = a.First().ShowcaseBrush })
                                             .ToList();
+
+
+            _regionManager = regionManager;
+
+            DRCommand = new DelegateCommand(DRNavigation);
+            NRCommand = new DelegateCommand(NRNavigation);
+
+            //Initialize the default region view
+            //Refer to https://stackoverflow.com/questions/54330435/navigate-to-a-default-view-when-application-loaded-using-prism-7-in-wpf
+            regionManager.RegisterViewWithRegion("ContentRegion", "DRWindows");
+
         }
+
+
+        private DelegateCommand _fieldName;
+        public DelegateCommand CommandName =>
+            _fieldName ?? (_fieldName = new DelegateCommand(ExecuteCommandName));
+
+        void ExecuteCommandName()
+        {
+            return;
+        }
+
+
+        #region Region Navigation
+
+        //XAML中定义了RegionManager，ViewModel里可以接收这个RegionManager
+        //RegionManager顾名思义，管理Region
+        private readonly IRegionManager _regionManager;
+
+        public DelegateCommand DRCommand { get; private set; }
+        public DelegateCommand NRCommand { get; private set; }
+
+        void DRNavigation()
+        {
+            if (_regionManager != null)
+            {
+                //注意，方法与Region注册不同，是Navigate关联的方法
+                _regionManager.RequestNavigate("ContentRegion", "DRWindows");
+            }
+        }
+
+        void NRNavigation()
+        {
+            if (_regionManager != null)
+            {
+                _regionManager.RequestNavigate("ContentRegion", "NRWindows");
+            }
+        }
+
+        #endregion
+
+
+
     }
 
     public class AppThemeMenuData : AccentColorMenuData
     {
-        protected override void DoChangeTheme(string? name)
+        protected override void DoChangeTheme(string name)
         {
             if (name is not null)
             {
@@ -53,22 +108,22 @@ namespace PlayWithMahApps.MetroForWork.ViewModels
 
     public class AccentColorMenuData
     {
-        public string? Name { get; set; }
+        public string Name { get; set; }
 
-        public Brush? BorderColorBrush { get; set; }
+        public Brush BorderColorBrush { get; set; }
 
-        public Brush? ColorBrush { get; set; }
+        public Brush ColorBrush { get; set; }
 
         public AccentColorMenuData()
         {
             //Update SimpleCommand with DelegateCommand 
             // this.ChangeAccentCommand = new SimpleCommand<string?>(o => true, this.DoChangeTheme);
-            this.ChangeAccentCommand = new DelegateCommand<string>(ExecuteChangeACommand, CanExecuteChangeACommand);
+            ChangeAccentCommand = new DelegateCommand<string>(ExecuteChangeACommand, CanExecuteChangeACommand);
         }
 
         void ExecuteChangeACommand(string name)
         {
-            this.DoChangeTheme(name);
+            DoChangeTheme(name);
         }
 
         bool CanExecuteChangeACommand(string name)
@@ -79,12 +134,14 @@ namespace PlayWithMahApps.MetroForWork.ViewModels
 
         public ICommand ChangeAccentCommand { get; }
 
-        protected virtual void DoChangeTheme(string? name)
+        protected virtual void DoChangeTheme(string name)
         {
             if (name is not null)
             {
                 ThemeManager.Current.ChangeThemeColorScheme(Application.Current, name);
             }
         }
+
+
     }
 }

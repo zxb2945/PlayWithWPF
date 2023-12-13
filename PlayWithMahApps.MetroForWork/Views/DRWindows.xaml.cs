@@ -13,7 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace PlayWithMahApps.MetroForWork.Views
+namespace PlayWithMahApps_Metro.Views
 {
     /// <summary>
     /// DRWindows.xaml 的交互逻辑

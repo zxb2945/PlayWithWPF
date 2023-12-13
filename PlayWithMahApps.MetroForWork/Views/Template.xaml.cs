@@ -16,11 +16,11 @@ using System.Windows.Shapes;
 namespace PlayWithMahApps_Metro.Views
 {
     /// <summary>
-    /// NRWindows.xaml 的交互逻辑
+    /// Template.xaml 的交互逻辑
     /// </summary>
-    public partial class NRWindows : UserControl
+    public partial class Template : UserControl
     {
-        public NRWindows()
+        public Template()
         {
             InitializeComponent();
         }

@@ -1,11 +1,11 @@
-﻿<mah:MetroWindow x:Class="PlayWithMahApps.MetroForWork.Views.MainWindow"
+﻿<mah:MetroWindow x:Class="PlayWithMahApps_Metro.Views.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:mah="http://metro.mahapps.com/winfx/xaml/controls"
         xmlns:iconPacks="http://metro.mahapps.com/winfx/xaml/iconpacks"                 
-        xmlns:prism="http://prismlibrary.com/" 
-        xmlns:local="clr-namespace:PlayWithMahApps.MetroForWork.Views"         
+        xmlns:prism="http://prismlibrary.com/"
         prism:ViewModelLocator.AutoWireViewModel="True"
+        xmlns:local="clr-namespace:PlayWithMahApps_Metro.Views"
         Width="1024"
         Height="768"
         MinWidth="800"
@@ -74,11 +74,11 @@
     <!--https://github.com/MahApps/MahApps.Metro/issues/3464-->
     <mah:MetroWindow.IconTemplate>
         <DataTemplate>
-            <iconPacks:PackIconModern Width="{TemplateBinding Width}"
+            <iconPacks:PackIconMaterial Width="{TemplateBinding Width}"
                                       Height="{TemplateBinding Height}"
                                       Margin="4"
                                       Foreground="{DynamicResource IdealForegroundColorBrush}"
-                                      Kind="Box" />
+                                      Kind="TransmissionTower" />
         </DataTemplate>
     </mah:MetroWindow.IconTemplate>
 
@@ -109,33 +109,28 @@
                                DisplayMode="CompactOverlay"
                                HamburgerWidth="48"
                                IsPaneOpen="{Binding IsHamburgerMenuPaneOpen}"
-                               ItemInvoked="HamburgerMenuControl_OnItemInvoked"
                                ItemTemplate="{StaticResource HamburgerOptionsMenuItem}"
-                               SelectedIndex="1"
+                               SelectedIndex="0"
                                VerticalScrollBarOnLeftSide="False">
 
                 <!--  Items  -->
                 <mah:HamburgerMenu.ItemsSource>
                     <mah:HamburgerMenuItemCollection>
-
                         <mah:HamburgerMenuIconItem x:Name="AboutOption"
-                                                   Command="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType=mah:HamburgerMenu}, Path=DataContext.ShowHamburgerAboutCommand}"
-                                                   Label="HelloDR">
+                                                   Command="{Binding DRCommand}"
+                                                   Label="LTE_DRAN">
                             <mah:HamburgerMenuIconItem.Icon>
                                 <iconPacks:PackIconMaterial Width="22"
                                                             Height="22"
                                                             HorizontalAlignment="Center"
                                                             VerticalAlignment="Center"
-                                                            Kind="TransmissionTower" />
+                                                            Kind="Signal4g" />
                             </mah:HamburgerMenuIconItem.Icon>
-                            <mah:HamburgerMenuIconItem.Tag>
-                                <local:DRWindows DataContext="{Binding}" />
-                            </mah:HamburgerMenuIconItem.Tag>
                         </mah:HamburgerMenuIconItem>
-                        
+
                         <mah:HamburgerMenuIconItem x:Name="AboutOption2"
-                                                   Command="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType=mah:HamburgerMenu}, Path=DataContext.ShowHamburgerAboutCommand}"
-                                                   Label="HelloNR">
+                                                   Command="{Binding NRCommand}"
+                                                   Label="NR">
                             <mah:HamburgerMenuIconItem.Icon>
                                 <!--  iconPacks need to be downloaded through Nuget, and icon by kind property-->
                                 <iconPacks:PackIconMaterial Width="22"
@@ -144,56 +139,31 @@
                                                             VerticalAlignment="Center"
                                                             Kind="Signal5g" />
                             </mah:HamburgerMenuIconItem.Icon>
-                            <mah:HamburgerMenuIconItem.Tag>
-                                <!--  it could be placed any type here  -->
-                                <local:NRWindows DataContext="{Binding}" />
-                            </mah:HamburgerMenuIconItem.Tag>
                         </mah:HamburgerMenuIconItem>
-
 
                         <mah:HamburgerMenuIconItem x:Name="AboutOption3"
                                                    Command="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType=mah:HamburgerMenu}, Path=DataContext.ShowHamburgerAboutCommand}"
-                                                   Label="HelloNR">
+                                                   Label="ToolBox">
                             <mah:HamburgerMenuIconItem.Icon>
                                 <iconPacks:PackIconMaterial Width="22"
                                                             Height="22"
                                                             HorizontalAlignment="Center"
                                                             VerticalAlignment="Center"
-                                                            Kind="SignalCellular1" />
+                                                            Kind="Tools"/>
                             </mah:HamburgerMenuIconItem.Icon>
-                            <mah:HamburgerMenuIconItem.Tag>
-                                <local:NRWindows DataContext="{Binding}" />
-                            </mah:HamburgerMenuIconItem.Tag>
                         </mah:HamburgerMenuIconItem>
 
                     </mah:HamburgerMenuItemCollection>
                 </mah:HamburgerMenu.ItemsSource>
 
-
-                <!--  Content  -->
-                <mah:HamburgerMenu.ContentTemplate>
-                    <DataTemplate>
-                        <Grid x:Name="ContentGrid">
-                            <Grid.RowDefinitions>
-                                <RowDefinition />
-                            </Grid.RowDefinitions>
-                            <mah:TransitioningContentControl Grid.Row="0"
-                                                             Content="{Binding}"
-                                                             RestartTransitionOnContentChange="True"
-                                                             Transition="Default">
-                                <mah:TransitioningContentControl.Resources>
-                                    <DataTemplate DataType="{x:Type mah:HamburgerMenuIconItem}">
-                                        <ContentControl Content="{Binding Tag, Mode=OneWay}"
-                                                        Focusable="True"
-                                                        IsTabStop="False" />
-                                    </DataTemplate>
-                                </mah:TransitioningContentControl.Resources>
-                            </mah:TransitioningContentControl>
-                        </Grid>
-                    </DataTemplate>
-                </mah:HamburgerMenu.ContentTemplate>
+                <!--Refer to https://elf-mission.net/programming/wpf/ui-gallery/case01-01/-->
+                <!--Refer to https://yutampo-blog.com/12-opencv%E3%81%A7%E7%94%BB%E5%83%8F%E5%87%A6%E7%90%86%E3%82%A2%E3%83%97%E3%83%AA%E3%82%92%E4%BD%9C%E3%82%8D%E3%81%86hambergermenu2/-->
+                <mah:HamburgerMenu.Content>
+                    <mah:TransitioningContentControl x:Name="ContentRegion"
+                                                   prism:RegionManager.RegionName="ContentRegion"
+                                                   Transition="RightReplace"/>
+                </mah:HamburgerMenu.Content>
             </mah:HamburgerMenu>
         </Border>
-
     </Grid>
-</mah:MetroWindow>
+</mah:MetroWindow>                 

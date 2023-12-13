@@ -1,8 +1,8 @@
-﻿using PlayWithMahApps.MetroForWork.Views;
+﻿using PlayWithMahApps_Metro.Views;
 using Prism.Ioc;
 using System.Windows;
 
-namespace PlayWithMahApps.MetroForWork
+namespace PlayWithMahApps_Metro
 {
     /// <summary>
     /// Interaction logic for App.xaml
@@ -16,7 +16,8 @@ namespace PlayWithMahApps.MetroForWork
 
         protected override void RegisterTypes(IContainerRegistry containerRegistry)
         {
-
+            containerRegistry.RegisterForNavigation<DRWindows>();
+            containerRegistry.RegisterForNavigation<NRWindows>();
         }
     }
 }
