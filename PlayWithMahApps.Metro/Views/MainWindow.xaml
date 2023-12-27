@@ -142,7 +142,7 @@
                         </mah:HamburgerMenuIconItem>
 
                         <mah:HamburgerMenuIconItem x:Name="AboutOption3"
-                                                   Command="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType=mah:HamburgerMenu}, Path=DataContext.ShowHamburgerAboutCommand}"
+                                                   Command="{Binding TemplateCommand}"
                                                    Label="ToolBox">
                             <mah:HamburgerMenuIconItem.Icon>
                                 <iconPacks:PackIconMaterial Width="22"

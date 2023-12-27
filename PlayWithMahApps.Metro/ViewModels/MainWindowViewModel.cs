@@ -45,6 +45,7 @@ namespace PlayWithMahApps_Metro.ViewModels
 
             DRCommand = new DelegateCommand(DRNavigation);
             NRCommand = new DelegateCommand(NRNavigation);
+            TemplateCommand =  new DelegateCommand(TemplateNavigation);
 
             //Initialize the default region view
             //Refer to https://stackoverflow.com/questions/54330435/navigate-to-a-default-view-when-application-loaded-using-prism-7-in-wpf
@@ -71,6 +72,7 @@ namespace PlayWithMahApps_Metro.ViewModels
 
         public DelegateCommand DRCommand { get; private set; }
         public DelegateCommand NRCommand { get; private set; }
+        public DelegateCommand TemplateCommand { get; private set; }
 
         void DRNavigation()
         {
@@ -86,6 +88,14 @@ namespace PlayWithMahApps_Metro.ViewModels
             if (_regionManager != null)
             {
                 _regionManager.RequestNavigate("ContentRegion", "NRWindows");
+            }
+        }
+
+        void TemplateNavigation()
+        {
+            if (_regionManager != null)
+            {
+                _regionManager.RequestNavigate("ContentRegion", "Template");
             }
         }
 

@@ -18,6 +18,7 @@ namespace PlayWithMahApps_Metro
         {
             containerRegistry.RegisterForNavigation<DRWindows>();
             containerRegistry.RegisterForNavigation<NRWindows>();
+            containerRegistry.RegisterForNavigation<Template>();
         }
     }
 }
