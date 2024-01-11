@@ -10,7 +10,7 @@ This repository is created to familiarize and create template projects for refer
 
 **Screenshot:** 
 
-![](C:\GitHub\PlayWithWPF\assets\TestUIForPrism-1704940643279-1.png)
+![](C:\GitHub\PlayWithWPF\assets\TestUIForPrism.png)
 
 ------
 
@@ -20,4 +20,4 @@ This repository is created to familiarize and create template projects for refer
 
 **Screenshot:**
 
-![](C:\GitHub\PlayWithWPF\assets\PlayWithMahApps-1704940670766-3.png)
+![](C:\GitHub\PlayWithWPF\assets\PlayWithMahApps.png)
