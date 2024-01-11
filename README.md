@@ -1,3 +1,7 @@
+---
+typora-root-url: ./
+---
+
 ## 仓库简介
 
 本仓库是我在WPF开发过程中，应用各种框架，控件库，图标库前，熟悉并且制作相应的模板项目，便于参考。
@@ -8,7 +12,7 @@
 
 界面截图：
 
-![TestUIForPrism](docs\images\TestUIForPrism.png)
+![TestUIForPrism](/docs/images/TestUIForPrism.png)
 
 ## MahApps.Metro控件库应用
 
@@ -16,4 +20,4 @@
 
 界面截图：
 
-![PlayWithMahApps](docs\images\PlayWithMahApps.png)
+![PlayWithMahApps](/docs\images\PlayWithMahApps.png)
