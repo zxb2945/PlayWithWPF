@@ -10,7 +10,7 @@ This repository is created to familiarize and create template projects for refer
 
 **Screenshot:** 
 
-![](C:\GitHub\PlayWithWPF\assets\TestUIForPrism-1704941822391-7.png)
+![](/assets/TestUIForPrism.png)
 
 ------
 
