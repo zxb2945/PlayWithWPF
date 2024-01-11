@@ -1,5 +1,5 @@
 ---
-typora-root-url: ./
+
 ---
 
 ## 仓库简介
@@ -12,7 +12,7 @@ typora-root-url: ./
 
 界面截图：
 
-![TestUIForPrism](/docs/images/TestUIForPrism.png)
+![](/assets/TestUIForPrism.png)
 
 ## MahApps.Metro控件库应用
 
@@ -20,4 +20,5 @@ typora-root-url: ./
 
 界面截图：
 
-![PlayWithMahApps](/docs\images\PlayWithMahApps.png)
+![](/assets/PlayWithMahApps.png)
+
