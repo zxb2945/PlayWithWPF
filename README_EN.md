@@ -20,4 +20,4 @@ This repository is created to familiarize and create template projects for refer
 
 **Screenshot:**
 
-![](/assets/TestUIForPrism.png)
+![](/assets/PlayWithMahApps.png)
